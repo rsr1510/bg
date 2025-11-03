@@ -34,10 +34,9 @@ pipeline {
 
     post {
         always {
-            node('master') {
                 echo 'Cleaning up Docker login...'
                 sh 'docker logout'
             }
         }
-    }
+    
 }
