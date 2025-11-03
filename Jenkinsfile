@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_CREDENTIALS = credentials('')
+        DOCKERHUB_CREDENTIALS = credentials('35f96797-19e6-46bd-baf0-9dbcdae66bb5')
     }
 
     stages {
@@ -34,7 +34,7 @@ pipeline {
 
     post {
         always {
-            node {
+            node('master') {
                 echo 'Cleaning up Docker login...'
                 sh 'docker logout'
             }
