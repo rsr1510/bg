@@ -1,0 +1,48 @@
+# Node.js dependencies
+app/node_modules/
+app/package-lock.json
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Docker
+docker-compose.override.yml
+.docker/
+*.pid
+*.seed
+*.bak
+Dockerfile.old
+
+# Jenkins
+jenkins_home/
+*.jenkinsfile.bak
+
+# OS generated files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# IDE settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Nginx temp/cache
+nginx/*.temp
+nginx/*.cache
+
+# Backup or temporary files
+*.tmp
+*.old
+*.orig
