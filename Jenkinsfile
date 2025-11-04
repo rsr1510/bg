@@ -2,10 +2,20 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_CREDENTIALS = credentials('dock') // ID in Jenkins credentials
+        DOCKERHUB_CREDENTIALS = credentials('dock') // DockerHub credentials ID
+        GIT_CREDENTIALS = credentials('git-creds')  // GitHub credentials ID
     }
 
     stages {
+        stage('Checkout') {
+            steps {
+                script {
+                    echo "Cloning repository using Git credentials..."
+                    git credentialsId: 'git-creds', url: 'https://github.com/rsr1510/bluegreen.git', branch: 'main'
+                }
+            }
+        }
+
         stage('Build') {
             steps {
                 script {
@@ -31,7 +41,6 @@ pipeline {
             steps {
                 script {
                     echo "Deploying application via docker compose..."
-                    // If compose file is named docker-compose.yml
                     sh 'docker compose down || true'
                     sh 'docker compose up -d'
                 }
