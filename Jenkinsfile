@@ -2,17 +2,15 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_CREDENTIALS = credentials('dock') // DockerHub credentials ID
-        GIT_CREDENTIALS = credentials('git-creds')  // GitHub credentials ID
+        DOCKERHUB_CREDENTIALS = credentials('dock')  // DockerHub credentials ID
     }
 
     stages {
+
         stage('Checkout') {
             steps {
-                script {
-                    echo "Cloning repository using Git credentials..."
-                    git credentialsId: 'git-creds', url: 'https://github.com/rsr1510/bluegreen.git', branch: 'main'
-                }
+                echo "Cloning repository from GitHub..."
+                git credentialsId: 'git-creds', url: 'https://github.com/rsr1510/bg.git', branch: 'main'
             }
         }
 
